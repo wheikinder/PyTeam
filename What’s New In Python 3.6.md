@@ -236,12 +236,7 @@ creation))
 
 ### PEP 487: 描述符协议增强¶
 
-[**PEP 487**][44] 扩展描述符协议必须包括新的可选的[`__set_name __（）`](https://docs.python.org/3.6/reference/datamodel.html#object.\_\_set\_name\_\_ "object.\_\_set\_name\_\_" )方法。 每当定义一个新类时，新方法将会调用定义中所有的描述符， Whenever a new class is defined, the new method will be called on all
-descriptors included in the definition, providing them with a reference to the
-class being defined and the name given to the descriptor within the class
-namespace. In other words, instances of descriptors can now know the attribute
-name of the descriptor in the owner class:
-
+[**PEP 487**][44] 扩展描述符协议必须包括新的可选的[`__set_name __（）`](https://docs.python.org/3.6/reference/datamodel.html#object.\_\_set\_name\_\_ "object.\_\_set\_name\_\_" )方法。 每当定义一个新类时，新方法将会调用定义中所有的描述符，向他们提供前面类的引用和命名空间里描述符的名字。 换而言之， 描述符的实例现在可以知道主类描述符的属性名字：
 ```
 
     class IntField:
@@ -262,26 +257,25 @@ name of the descriptor in the owner class:
 
 ```
 
-See also
 
-[**PEP 487**][45] - Simpler
-customization of class creation
+
+[**PEP 487**][45] - 更简单
+定制类的创建
 
 	由Yury Selivanov撰写并实现的PEP。
 
-[Feature documentation](https://docs.python.org/3.6/reference/datamodel.html#d
+[功能文档](https://docs.python.org/3.6/reference/datamodel.html#d
 escriptors)
 
-### PEP 519: Adding a file system path protocol¶
+### PEP 519: 增加文件路径协议¶
 
-File system paths have historically been represented as
-[`str`][46] or
+文件系统路径曾被表示为
+[`str`][46] 或
 [`bytes`][47]
-objects. This has led to people who write code which operate on file system
-paths to assume that such objects are only one of those two types (an
+对象。导致写这些代码的人假设文件系统只能表示为两者之一(其实
 [`int`][48]
-representing a file descriptor does not count as that is not a file path).
-Unfortunately that assumption prevents alternative object representations of
+也是文件描述符)。
+不幸的是 assumption prevents alternative object representations of
 file system paths like
 [`pathlib`](https://docs.python.org/3.6/library/pathlib.html#module-pathlib
 "pathlib: Object-oriented filesystem paths" ) from working with pre-existing
